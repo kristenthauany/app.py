@@ -64,7 +64,7 @@ st.markdown(
     f"""
     <div class='imagem-box'>
         <div class='cronometro-box'>
-            Tempo para ver a gatinha:<br>
+            Tempo para ver meu amor:<br>
             <span style="font-size: 28px;">{dias}d {horas}h {minutos}m {segundos}s</span>
         </div>
         <img src='https://i.imgur.com/xG9tzBD.png' width='80'>
