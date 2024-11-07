@@ -1,5 +1,6 @@
 import streamlit as st
 from datetime import datetime
+import time
 
 # Defina a data da viagem
 data_viagem = datetime(2024, 12, 16, 18, 0)
@@ -58,20 +59,28 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Mostra o tempo restante com texto e cronômetro na mesma linha
-dias, horas, minutos, segundos = cronometro_viagem()
-st.markdown(
-    f"""
-    <div class='imagem-box'>
-        <div class='cronometro-box'>
-            Tempo para ver meu amor:<br>
-            <span style="font-size: 28px;">{dias}d {horas}h {minutos}m {segundos}s</span>
+# Loop para atualização em tempo real
+while True:
+    # Calcula o tempo restante
+    dias, horas, minutos, segundos = cronometro_viagem()
+    
+    # Mostra o tempo restante com texto e cronômetro na mesma linha
+    st.markdown(
+        f"""
+        <div class='imagem-box'>
+            <div class='cronometro-box'>
+                Tempo para ver meu amor:<br>
+                <span style="font-size: 28px;">{dias}d {horas}h {minutos}m {segundos}s</span>
+            </div>
+            <img src='https://i.imgur.com/xG9tzBD.png' width='80'>
         </div>
-        <img src='https://i.imgur.com/xG9tzBD.png' width='80'>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# Mensagem de amor com o mesmo estilo
-st.markdown("<div class='texto-emoji'>Lembre-se sempre: Eu te amo demais!</div>", unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Mensagem de amor com o mesmo estilo
+    st.markdown("<div class='texto-emoji'>Lembre-se sempre: Eu te amo demais!</div>", unsafe_allow_html=True)
+    
+    # Aguarda um segundo antes de atualizar novamente
+    time.sleep(1)
+    st.experimental_rerun()
